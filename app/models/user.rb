@@ -3,6 +3,7 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   before_validation { email.downcase! }
   has_secure_password
+  has_many :pictures
 
   with_options presence: true do
     validates :name

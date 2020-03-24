@@ -1,5 +1,6 @@
 class PicturesController < ApplicationController
   before_action :find_params_object, only:[:edit, :update, :show, :destroy]
+  before_action :link_current_user, only:[:create, :confirm]
 
   def index
     @pictures = Picture.all
@@ -7,14 +8,13 @@ class PicturesController < ApplicationController
 
   def new
     if params[:back]
-      @picture = Picture.new(get_parms)
+      @picture = link_current_user
     else
       @picture = Picture.new
     end
   end
 
   def create
-    @picture = Picture.new(get_parms)
     if @picture.save
       redirect_to pictures_path
     else
@@ -26,7 +26,7 @@ class PicturesController < ApplicationController
   end
 
   def update
-    if @picture.update(get_parms)
+    if @picture.update(get_params)
       redirect_to pictures_path, notice:"編集しました"
     else
       render :edit
@@ -45,11 +45,10 @@ class PicturesController < ApplicationController
   end
 
   def confirm
-    @picture = Picture.new(get_parms)
   end
   
   private
-  def get_parms
+  def get_params
     params.require(:picture).permit(:title, :image, :image_cache, :content)
   end
 
@@ -57,4 +56,7 @@ class PicturesController < ApplicationController
     @picture = Picture.find(params[:id])
   end
 
+  def link_current_user
+    @picture = current_user.pictures.new(get_params)
+  end
 end
