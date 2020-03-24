@@ -1,7 +1,7 @@
 <strong>Title:</strong>
 <%= @picture.title %>
 <strong>Image:</strong>
-<% if @user.picture? %>
+<% if @picture.image? %>
   <%= image_tag @picture.image.url %>
 <% end %>
 <strong>Content:</strong>
