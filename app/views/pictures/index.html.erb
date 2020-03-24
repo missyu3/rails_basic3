@@ -7,6 +7,7 @@
       <li><%= image_tag f.image.url%></li>
       <li><%= f.content %></li>
       <li><%= f.updated_at  %></li>
+      <li><%= link_to "参照", picture_path(f.id) %></li>
       <li><%= link_to "編集", edit_picture_path(f.id) %></li>
       <li><%= link_to "削除", picture_path(f.id) ,method: :delete, data:{confirm:"本当に削除しても良いですか？"} %></li>
     </ul>
