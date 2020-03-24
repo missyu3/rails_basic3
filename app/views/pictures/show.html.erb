@@ -1,7 +1,9 @@
 <strong>Title:</strong>
 <%= @picture.title %>
 <strong>Image:</strong>
-<%= image_tag @picture.image.url %>
+<% if @user.picture? %>
+  <%= image_tag @picture.image.url %>
+<% end %>
 <strong>Content:</strong>
 <%= @picture.content %>
 <%= link_to 'Edit', edit_picture_path(@picture) %>

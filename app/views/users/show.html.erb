@@ -1,0 +1,12 @@
+<strong>Name:</strong>
+<%= @user.name %>
+<strong>Email:</strong>
+<%= @user.email %>
+<strong>Image:</strong>
+<% if @user.image? %>
+  <%= image_tag @user.image.url %>
+<% end %>
+<strong>Profile:</strong>
+<%= @user.profile %>
+<%= link_to 'Edit', edit_user_path(@user) %>
+<%= link_to 'Back', pictures_path %>
