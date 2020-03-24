@@ -8,5 +8,7 @@
 <% end %>
 <strong>Profile:</strong>
 <%= @user.profile %>
-<%= link_to 'Edit', edit_user_path(@user) %>
+<% if current_user?(@user.id) %>
+  <%= link_to 'Edit', edit_user_path(@user) %>
+<% end %>
 <%= link_to 'Back', pictures_path %>

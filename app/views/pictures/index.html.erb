@@ -6,11 +6,13 @@
       <li><%= f.title %></li>
       <li><%= image_tag f.image.url%></li>
       <li><%= f.content %></li>
-      <li><%= f.user.name %></li>
+      <li><%= link_to f.user.name, user_path(f.user.id) %></li>
       <li><%= f.updated_at  %></li>
       <li><%= link_to "参照", picture_path(f.id) %></li>
-      <li><%= link_to "編集", edit_picture_path(f.id) %></li>
-      <li><%= link_to "削除", picture_path(f.id) ,method: :delete, data:{confirm:"本当に削除しても良いですか？"} %></li>
+      <% if current_user?(f.user.id) %>
+        <li><%= link_to "編集", edit_picture_path(f.id) %></li>
+        <li><%= link_to "削除", picture_path(f.id) ,method: :delete, data:{confirm:"本当に削除しても良いですか？"} %></li>
+      <% end %>
     </ul>
   <% end %>
 </article>
