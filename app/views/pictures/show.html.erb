@@ -1,0 +1,8 @@
+<strong>Title:</strong>
+<%= @picture.title %>
+<strong>Image:</strong>
+<%= image_tag @picture.image.url %>
+<strong>Content:</strong>
+<%= @picture.content %>
+<%= link_to 'Edit', edit_feed_path(@picture) %>
+<%= link_to 'Back', feeds_path %>

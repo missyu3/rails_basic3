@@ -1,0 +1,14 @@
+<article>
+  <h1>投稿一覧</h1>
+  <%= link_to "新規作成", new_picture_path %>  
+  <% @pictures.each do |f| %>
+    <ul>
+      <li><%= f.title %></li>
+      <li><%= image_tag f.image.url%></li>
+      <li><%= f.content %></li>
+      <li><%= f.updated_at  %></li>
+      <li><%= link_to "編集", edit_picture_path(f.id) %></li>
+      <li><%= link_to "削除", picture_path(f.id) ,method: :delete, data:{confirm:"本当に削除しても良いですか？"} %></li>
+    </ul>
+  <% end %>
+</article>

@@ -1,0 +1,26 @@
+<%= form_with(model: @picture, local: true ,url: choose_new_or_edit) do |form| %>
+  <% if @picture.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= "#{@picture.errors.count}件のエラーがあります。" %>
+      </h2>
+      <ul>
+        <% @picture.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.label :title %><br>
+  <%= form.text_field :title %>
+  <%= form.label :image %><br>
+  <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+  <%= form.file_field :image %>
+  <%= form.hidden_field :image_cache %><br>
+  <%= form.label :content %><br>
+  <%= form.text_area :content %>
+  <%= form.submit %>
+<% end %>
+<%= link_to "一覧画面にもどる", pictures_path %>
