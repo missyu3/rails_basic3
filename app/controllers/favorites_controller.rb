@@ -1,7 +1,5 @@
 class FavoritesController < ApplicationController
   def create
-    # @favorite = current_user.favorites.new(picture_id: params[:picture_id])
-    # @favorite.saveq
   @favorite = current_user.favorites.new(picture_id: params[:picture_id])
     if @favorite.save
       redirect_to pictures_path
