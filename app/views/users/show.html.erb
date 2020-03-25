@@ -11,4 +11,5 @@
 <% if current_user?(@user.id) %>
   <%= link_to 'Edit', edit_user_path(@user) %>
 <% end %>
+<%= link_to 'お気に入り一覧', favorites_path(user_id: @user.id) %>
 <%= link_to 'Back', pictures_path %>

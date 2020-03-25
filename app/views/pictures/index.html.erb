@@ -12,6 +12,12 @@
       <% if current_user?(f.user.id) %>
         <li><%= link_to "編集", edit_picture_path(f.id) %></li>
         <li><%= link_to "削除", picture_path(f.id) ,method: :delete, data:{confirm:"本当に削除しても良いですか？"} %></li>
+      <% else %>
+        <% if current_user.favorite_pictures && current_user.favorite_pictures.find_by(id: f.id) %>
+          <li><%= link_to "お気に入り削除",  favorite_path(f.favorites.first.id), method: :delete %></li>
+        <% else %>
+          <li><%= link_to "お気に入り",  favorites_path(picture_id: f.id), method: :post %></li>
+        <% end %>
       <% end %>
     </ul>
   <% end %>

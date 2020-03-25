@@ -6,5 +6,13 @@
 <% end %>
 <strong>Content:</strong>
 <%= @picture.content %>
-<%= link_to 'Edit', edit_picture_path(@picture) %>
+<% if current_user?(@picture.id) %>
+  <%= link_to 'Edit', edit_picture_path(@picture) %>
+<% else %>
+  <% if current_user.favorite_pictures && current_user.favorite_pictures.find_by(id: @picture.id) %>
+    <%= link_to "お気に入り削除",  favorite_path(@picture.favorites.first.id), method: :delete %>
+  <% else %>
+    <%= link_to "お気に入り",  favorites_path(picture_id: @picture.id), method: :post %>
+  <% end %>
+<% end %>
 <%= link_to 'Back', pictures_path %>
