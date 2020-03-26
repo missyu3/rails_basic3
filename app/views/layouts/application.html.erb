@@ -12,11 +12,12 @@
   <body>
     <header>
       <% if logged_in? %>
-        <a>InstagramClone</a>
+        <%= link_to "InstagramClone", user_path(current_user.id) %>
         <%= "名前 : #{current_user.name}" %>
         <%= link_to "プロフィール", user_path(current_user.id) %>
         <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
       <% else %>
+        <%= link_to "InstagramClone", new_session_path %>
         <%= link_to "ユーザー作成", new_user_path %>
         <%= link_to "ログイン", new_session_path %>
       <% end %>

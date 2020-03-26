@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root to: 'pictures#index'
   mount LetterOpenerWeb::Engine, at: "/inbox" if Rails.env.development?
   resources :users, only: [:show, :new, :create, :edit, :update]
   resources :sessions, only: [:new, :create, :destroy]
