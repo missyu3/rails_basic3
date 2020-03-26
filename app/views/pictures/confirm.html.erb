@@ -2,10 +2,10 @@
 <h3>以下の内容で、よろしいでしょうか</h3>
 <%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
   <%= form.label :title %>
-  <%= @picture.title %>
-  <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+  <%= @picture.title %><br>
+  <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %><br>
   <%= form.label :content %>
-  <%= @picture.content %>
+  <%= @picture.content %><br>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :image_cache %>
   <%= form.hidden_field :content %>

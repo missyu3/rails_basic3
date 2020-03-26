@@ -14,13 +14,13 @@
     </div>
   <% end %>
   <%= form.label :title %><br>
-  <%= form.text_field :title %>
-  <%= form.label :image %><br>
-  <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+  <%= form.text_field :title %><br><br>
+  <%= form.label :image %>
+  <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %><br>
   <%= form.file_field :image %>
-  <%= form.hidden_field :image_cache %><br>
+  <%= form.hidden_field :image_cache %><br><br>
   <%= form.label :content %><br>
-  <%= form.text_area :content %>
+  <%= form.text_area :content %><br>
   <%= form.submit %>
 <% end %>
 <%= link_to "一覧画面にもどる", pictures_path %>
