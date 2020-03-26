@@ -9,7 +9,7 @@
       <% end %>
       <li><%= f.content %></li>
       <li><%= link_to f.user.name, user_path(f.user.id) %></li>
-      <li><%= f.updated_at  %></li>
+      <li><%= l(f.updated_at) %></li>
       <li><%= link_to "参照", picture_path(f.id) %></li>
       <% if current_user?(f.user.id) %>
         <li><%= link_to "編集", edit_picture_path(f.id) %></li>

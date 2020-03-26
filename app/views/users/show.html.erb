@@ -1,15 +1,17 @@
-<strong>Name:</strong>
-<%= @user.name %>
-<strong>Email:</strong>
-<%= @user.email %>
-<strong>Image:</strong>
+<h1><%="#{@user.name}のページ"%></h1>
+<strong>名前:</strong>
+<%= @user.name %><br>
+<strong>メール:</strong>
+<%= @user.email %><br>
+<strong>画像:</strong>
 <% if @user.image? %>
   <%= image_tag @user.image.url %>
 <% end %>
-<strong>Profile:</strong>
-<%= @user.profile %>
+<br>
+<strong>メッセージ:</strong>
+<%= @user.profile %><br>
 <% if current_user?(@user.id) %>
-  <%= link_to 'Edit', edit_user_path(@user) %>
+  <%= link_to '更新', edit_user_path(@user) %><br>
 <% end %>
-<%= link_to 'お気に入り一覧', favorites_path(user_id: @user.id) %>
-<%= link_to 'Back', pictures_path %>
+<%= link_to 'お気に入り一覧', favorites_path(user_id: @user.id) %><br>
+<%= link_to '投稿一覧', pictures_path %><br>
