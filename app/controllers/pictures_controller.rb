@@ -16,6 +16,7 @@ class PicturesController < ApplicationController
 
   def create
     if @picture.save
+      ContactMailer.contact_mail(@picture).deliver
       redirect_to pictures_path
     else
       render :new
