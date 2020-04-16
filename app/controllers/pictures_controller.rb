@@ -67,6 +67,7 @@ class PicturesController < ApplicationController
   end
 
   def my_picture?
-    current_user == Picture.find(params[:id]).user_id
+    binding.irb
+    current_user.id == Picture.find(params[:id]).user_id
   end
 end
