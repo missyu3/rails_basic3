@@ -23,5 +23,6 @@
       <% end %>
     </header>
     <%= yield %>
+    <li><%= link_to 'ユーザー一覧', users_path if logged_in? %></li>
   </body>
 </html>

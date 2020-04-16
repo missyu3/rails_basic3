@@ -13,5 +13,18 @@
 <% if current_user?(@user.id) %>
   <%= link_to '更新', edit_user_path(@user) %><br>
 <% end %>
+お気に入りユーザー一覧
+<br>
+<% @user.active_relationships.each do |relation| %>
+  <%= relation.followed.name %><br>
+<% end %>
+<br>
+被お気に入りユーザー一覧
+<br>
+<% @user.passive_relationships.each do |relation| %>
+  <%= relation.follower.name %><br>
+<% end %>
+<br>
+<br>
 <%= link_to 'お気に入り一覧', favorites_path(user_id: @user.id) %><br>
 <%= link_to '投稿一覧', pictures_path %><br>

@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-  before_action :find_params_object, only:[:edit, :update, :show, :destroy]
+  before_action :find_params_object, only:[:update, :show, :destroy]
   before_action :link_current_user, only:[:create, :confirm]
 
   def index
@@ -24,6 +24,11 @@ class PicturesController < ApplicationController
   end
 
   def edit
+    if my_picture?
+      find_params_object
+    else
+      redirect_to pictures_path
+    end
   end
 
   def update
@@ -41,7 +46,7 @@ class PicturesController < ApplicationController
     if @picture.destroy
       redirect_to pictures_path, notice:"削除しました"
     else
-      render:edit
+      render :edit
     end
   end
 
@@ -59,5 +64,9 @@ class PicturesController < ApplicationController
 
   def link_current_user
     @picture = current_user.pictures.new(get_params)
+  end
+
+  def my_picture?
+    current_user == Picture.find(params[:id]).user_id
   end
 end
